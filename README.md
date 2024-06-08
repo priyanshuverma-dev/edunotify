@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# EduNotify
 
-## Getting Started
+EduNotify is a web application designed to provide a notice board feature for educational institutions, allowing users to manage notices with role-based access control. The application leverages technologies such as Permit.io, Clerk Authentication, Next.js, Tailwind CSS, and Shadcn-UI to deliver a seamless and intuitive user experience.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Notice Board Management**: Users can create, edit, and delete notices on the notice board.
+- **Role-Based Access Control**: Different user roles (e.g., principal, teacher, student) have different permissions to manage notices.
+- **Authentication**: Secure authentication and user management powered by Clerk Authentication.
+- **Real-Time Updates**: Seamless updates and notifications when new notices are added or existing ones are modified.
+- **Responsive Design**: Fully responsive design ensuring a consistent experience across devices.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies Used
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Permit.io**: Provides fine-grained access control with a flexible permission system.
+- **Clerk Authentication**: Handles user authentication and session management.
+- **Next.js**: React framework for building server-rendered web applications.
+- **Tailwind CSS**: Utility-first CSS framework for rapidly building custom designs.
+- **Shadcn-UI**: UI component library for React, offering a collection of customizable components.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Installation
 
-## Learn More
+1. Clone the repository:
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   git clone https://github.com/yourusername/edunotify.git
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Navigate to the project directory:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   ```bash
+   cd edunotify
+   ```
 
-## Deploy on Vercel
+3. Install dependencies:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   bun install
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+4. Set up environment variables:
+
+   Create a `.env` file in the root directory and add the required environment variables. Refer to the `.env.example` file for the list of variables needed.
+
+5. Initialize the database:
+
+   ```bash
+   npx prisma generate
+   ```
+
+6. Run the development server:
+
+   ```bash
+   bun run dev
+   ```
+
+7. Open your browser and navigate to `http://localhost:3000` to view the application.
+
+## Usage
+
+1. Sign up or log in with your credentials.
+2. Navigate to the school.
+3. Depending on your role, you can perform actions such as creating, editing, or deleting notices.
+4. Explore other features and functionalities tailored to your role.
+
+## Contributing
+
+Contributions are welcome! If you have any ideas, suggestions, or improvements, feel free to open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
