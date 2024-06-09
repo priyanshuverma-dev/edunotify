@@ -8,6 +8,7 @@ import Navbar from "@/components/navbar";
 import ModalProvider from "@/providers/modals";
 import QueryProvider from "@/providers/query";
 import CenterContainer from "@/components/center-container";
+import Footer from "@/components/footer";
 
 const inter = DM_Sans({ subsets: ["latin"] });
 
@@ -34,6 +35,7 @@ export default function RootLayout({
               <Navbar />
               <CenterContainer>{children}</CenterContainer>
               <ModalProvider />
+              <Footer />
             </SignedIn>
           </QueryProvider>
         </body>

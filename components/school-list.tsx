@@ -1,5 +1,4 @@
 "use client";
-import useSchools from "@/hooks/use-schools";
 import React from "react";
 import { Separator } from "./ui/separator";
 import Link from "next/link";
@@ -7,6 +6,7 @@ import { ExternalLink } from "lucide-react";
 import { Skeleton } from "./ui/skeleton";
 import { useSearchParams } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
+import useSchools from "@/hooks/use-schools";
 
 export default function SchoolList() {
   const searchParams = useSearchParams();
