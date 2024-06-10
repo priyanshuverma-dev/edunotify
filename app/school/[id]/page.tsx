@@ -23,7 +23,6 @@ export default function Page({ params }: { params: { id: string } }) {
     return <div>Error loading school</div>;
   }
 
-  console.log(data, isLoading, error);
   const school = data?.school;
   const permissions = data?.permissions;
   const currentRole = data?.currentRole;

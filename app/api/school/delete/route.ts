@@ -9,6 +9,7 @@ export async function POST(request: NextRequest) {
 
     const { schoolId } = await request.json();
 
+    // Check if user is authenticated
     if (!userId) {
       return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
@@ -20,6 +21,7 @@ export async function POST(request: NextRequest) {
       },
     });
 
+    // Check if school exists
     if (!school) {
       return NextResponse.json(
         { message: "School not found" },
@@ -27,11 +29,34 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Check if the user has permission to delete school
+    const check = await permit.check({ key: userId }, "delete", {
+      type: "school",
+      tenant: school.id,
+    });
+
+    if (!check) {
+      return NextResponse.json(
+        { message: "You don't have permission to delete school" },
+        { status: 403 }
+      );
+    }
+
+    // Delete the school
     await db.school.delete({
       where: {
         id: schoolId,
       },
     });
+
+    // Unassign the user from the tenant
+    await permit.api.unassignRole({
+      role: "principal",
+      user: userId,
+      tenant: schoolId,
+    });
+
+    // Delete the tenant
     await permit.api.deleteTenant(schoolId);
 
     return NextResponse.json({ message: "School deleted" });

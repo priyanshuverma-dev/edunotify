@@ -1,5 +1,10 @@
 "use client";
 
+/**
+ * REACT QUERY FOR SCHOOL PORTAL
+ * @see /api/school/portal
+ */
+
 import { Notice, SchoolStatus } from "@prisma/client";
 import { useQuery } from "@tanstack/react-query";
 

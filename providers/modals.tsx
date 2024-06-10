@@ -1,5 +1,9 @@
 "use client";
 
+/**
+ * ALL MODALS ARE REGISTERED HERE
+ */
+
 import CreateNoticeModal from "@/components/modals/create-notice-modal";
 import ConfirmationModal from "@/components/modals/delete-modal";
 import InviteTeachersModal from "@/components/modals/invite-teachers-modal";

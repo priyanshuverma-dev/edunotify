@@ -7,20 +7,22 @@ export async function POST(req: NextRequest) {
   try {
     const { email, schoolId } = await req.json();
 
-    if (!email) {
+    // Check if all required fields are provided
+    if (!schoolId || !email) {
       return NextResponse.json(
         { message: "Please provide all required fields" },
         { status: 400 }
       );
     }
 
-    // Create school
+    // Check if the user is authenticated
     const { userId } = auth();
 
     if (!userId) {
       return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
 
+    // Check if the school exists
     const schoolExist = await db.school.findUnique({
       where: {
         id: schoolId,
@@ -34,9 +36,11 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // List all users from permit API
     const syncedUsers = await permit.api.listUsers();
     const userExists = syncedUsers.find((user) => user.email === email);
 
+    // Check if user exists
     if (!userExists) {
       return NextResponse.json(
         { message: "User does not exist" },
@@ -44,6 +48,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // Check if user is already a teacher
     if (schoolExist.teachers.includes(email)) {
       return NextResponse.json(
         { message: "User is already a teacher" },
@@ -51,6 +56,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // Check if user is already a principal
     if (userExists.key === schoolExist.userId) {
       return NextResponse.json(
         { message: "You can't add principal" },
@@ -58,6 +64,20 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // Check if the user has permission to add teacher
+    const check = await permit.check({ key: userId }, "update", {
+      type: "school",
+      tenant: schoolId,
+    });
+
+    if (!check) {
+      return NextResponse.json(
+        { message: "You don't have permission to add teacher" },
+        { status: 403 }
+      );
+    }
+
+    // Add teacher to school
     const school = await db.school.update({
       where: {
         userId,
@@ -69,6 +89,7 @@ export async function POST(req: NextRequest) {
       },
     });
 
+    // Assign the user as the teacher of the school
     await permit.api.assignRole({
       role: "teacher",
       user: userExists.key,

@@ -10,10 +10,10 @@ import QueryProvider from "@/providers/query";
 import CenterContainer from "@/components/center-container";
 import Footer from "@/components/footer";
 
-const inter = DM_Sans({ subsets: ["latin"] });
+const fonts = DM_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "EduNotify",
+  title: "EduNotify - Permit.io Demo",
   description:
     "EduNotify is a platform for students to get notified about their school activities.",
 };
@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
-        <body className={inter.className}>
+        <body className={fonts.className}>
           <QueryProvider>
             <SignedOut>
               <SignedOutView />
@@ -35,9 +35,9 @@ export default function RootLayout({
               <Navbar />
               <CenterContainer>{children}</CenterContainer>
               <ModalProvider />
-              <Footer />
             </SignedIn>
           </QueryProvider>
+          <Footer />
         </body>
       </html>
     </ClerkProvider>

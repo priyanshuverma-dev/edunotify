@@ -4,6 +4,12 @@ import { UserJSON, WebhookEvent } from "@clerk/nextjs/server";
 import permit from "@/lib/permit";
 import db from "@/lib/db";
 
+/**
+ * This route is used to sync data between Clerk and the Permit API.
+ * @see https://clerk.com/docs/integrations/webhooks/sync-data
+ * @see https://docs.permit.io/sdk/nodejs/quickstart-nodejs
+ */
+
 export async function POST(req: Request) {
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the endpoint
   const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET;
@@ -50,27 +56,29 @@ export async function POST(req: Request) {
     });
   }
 
-  // Do something with the payload
-  // For this guide, you simply log the payload to the console
   const { id } = evt.data;
 
   const eventType = evt.type;
-  console.log(`Webhook with and ID of ${id} and type of ${eventType}`);
-  console.log("Webhook body:", body);
 
+  // Handle user created event
   if (eventType === "user.created") {
+    // Create a new user in the permit API
     await permit.api.createUser({
       key: id!,
       email: (evt.data as UserJSON).email_addresses[0].email_address,
     });
 
+    // Assign the role of student to the user initially
     await permit.api.assignRole({
       role: "student",
       user: id!,
       tenant: "default",
     });
   }
+
+  // Handle user deleted event
   if (eventType === "user.deleted") {
+    // Find the school associated with the user
     const schoolWithUser = await db.school.findUnique({
       where: {
         userId: id!,
@@ -78,6 +86,7 @@ export async function POST(req: Request) {
     });
 
     if (schoolWithUser) {
+      // Delete the school associated with the user and tenant from the permit API
       await db.school.delete({
         where: {
           userId: id!,
@@ -86,6 +95,7 @@ export async function POST(req: Request) {
       await permit.api.deleteTenant(schoolWithUser.id);
     }
 
+    // Delete the user from the permit API
     await permit.api.deleteUser(id!);
   }
 

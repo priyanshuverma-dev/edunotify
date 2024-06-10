@@ -7,6 +7,7 @@ export async function POST(req: NextRequest) {
   try {
     const { name, description, phone, email } = await req.json();
 
+    // Check if all required fields are provided
     if (!name || !phone || !email) {
       return NextResponse.json(
         { message: "Please provide all required fields" },
@@ -14,13 +15,14 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Create school
+    // Check if the user is authenticated
     const { userId } = auth();
 
     if (!userId) {
       return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
 
+    // Check if the user already has a school
     const userWithSchool = await db.school.findUnique({
       where: {
         userId,
@@ -34,6 +36,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // Create the school
     const school = await db.school.create({
       data: {
         name,
@@ -44,11 +47,13 @@ export async function POST(req: NextRequest) {
       },
     });
 
+    // Create the tenant with the school id
     const tenant = await permit.api.createTenant({
       key: school.id,
       name: school.name,
     });
 
+    // Assign the user as the principal of the school
     await permit.api.assignRole({
       role: "principal",
       user: userId,

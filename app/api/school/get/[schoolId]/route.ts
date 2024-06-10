@@ -11,10 +11,12 @@ export async function GET(
 
     const { schoolId } = params;
 
+    // Check if user is authenticated
     if (!userId) {
       return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
 
+    // Check if school exists
     const school = await db.school.findUnique({
       where: {
         id: schoolId,

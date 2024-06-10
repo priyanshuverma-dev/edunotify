@@ -10,6 +10,14 @@ EduNotify is a web application designed to provide a notice board feature for ed
 - **Real-Time Updates**: Seamless updates and notifications when new notices are added or existing ones are modified.
 - **Responsive Design**: Fully responsive design ensuring a consistent experience across devices.
 
+## DEMO
+
+[![Demo Video](https://img.youtube.com/vi/I2KNavXwWV8/0.jpg)](https://www.youtube.com/embed/I2KNavXwWV8)
+
+## Live Website
+
+You can view a live [Production Hosted Website.](https://edunotify.p7u.tech)
+
 ## Technologies Used
 
 - **Permit.io**: Provides fine-grained access control with a flexible permission system.
