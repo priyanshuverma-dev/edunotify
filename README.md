@@ -10,6 +10,10 @@ EduNotify is a web application designed to provide a notice board feature for ed
 - **Real-Time Updates**: Seamless updates and notifications when new notices are added or existing ones are modified.
 - **Responsive Design**: Fully responsive design ensuring a consistent experience across devices.
 
+## Vote on Quine
+
+Vote this project on quine [click here](https://quine.sh/repo/priyanshuverma-dev-edunotify-812312266?utm_source=copy&utm_share_context=quests_creators)
+
 ## DEMO
 
 [![Demo Video](https://img.youtube.com/vi/I2KNavXwWV8/0.jpg)](https://www.youtube.com/embed/I2KNavXwWV8)
@@ -78,3 +82,7 @@ Contributions are welcome! If you have any ideas, suggestions, or improvements, 
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+
+
+## Contributors
+- Priyanshu Verma ([@priyanshuverma-dev](https://github.com/priyanshuverma-dev))
