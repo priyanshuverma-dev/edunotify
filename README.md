@@ -1,5 +1,5 @@
 > Important!
-> This project is no more maintained by anyone and online preview is also shut down. You can still see the code and build something new. For any collaboration feel free to contact [Priyanshu Verma](https://www.linkedin.com/in/priyanshuverma04/)
+> This project is no more maintained by anyone and online preview is available. You can still see the code and build something new. For any collaboration feel free to contact [Priyanshu Verma](https://www.linkedin.com/in/priyanshuverma04/)
 
 
 # EduNotify
