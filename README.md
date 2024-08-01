@@ -1,3 +1,7 @@
+> Important!
+> This project is no more maintained by anyone and online preview is also shut down. You can still see the code and build something new. For any collaboration feel free to contact [Priyanshu Verma](https://www.linkedin.com/in/priyanshuverma04/)
+
+
 # EduNotify
 
 EduNotify is a web application designed to provide a notice board feature for educational institutions, allowing users to manage notices with role-based access control. The application leverages technologies such as Permit.io, Clerk Authentication, Next.js, Tailwind CSS, and Shadcn-UI to deliver a seamless and intuitive user experience.
@@ -10,18 +14,8 @@ EduNotify is a web application designed to provide a notice board feature for ed
 - **Real-Time Updates**: Seamless updates and notifications when new notices are added or existing ones are modified.
 - **Responsive Design**: Fully responsive design ensuring a consistent experience across devices.
 
-## Vote on Quine
-
-Vote this project on quine [click here](https://quine.sh/repo/priyanshuverma-dev-edunotify-812312266?utm_source=copy&utm_share_context=quests_creators)
-
-## DEMO
 
 [![Demo Video](https://img.youtube.com/vi/I2KNavXwWV8/0.jpg)](https://www.youtube.com/embed/I2KNavXwWV8)
-
-## Live Website
-
-You can view a live [Production Hosted Website.](https://edunotify.p7u.tech)
-
 ## Technologies Used
 
 - **Permit.io**: Provides fine-grained access control with a flexible permission system.
