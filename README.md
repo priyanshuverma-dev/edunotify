@@ -1,10 +1,10 @@
-> Important!
-> This project is no more maintained by anyone and online preview is available. You can still see the code and build something new. For any collaboration feel free to contact [Priyanshu Verma](https://www.linkedin.com/in/priyanshuverma04/)
+> Important !!
+> This Project is now under [SWoC](https://www.socialwinterofcode.com). Contributors from there feel free to open issues and tag me for help. For any collaboration feel free to contact [Priyanshu Verma](https://www.linkedin.com/in/priyanshu-verma-dev/)
 
 
 # EduNotify
 
-EduNotify is a web application designed to provide a notice board feature for educational institutions, allowing users to manage notices with role-based access control. The application leverages technologies such as Permit.io, Clerk Authentication, Next.js, Tailwind CSS, and Shadcn-UI to deliver a seamless and intuitive user experience.
+EduNotify is a web application designed to provide a notice board feature for educational institutions. It allows users to manage notices with role-based access control. The application leverages Permit.io, Clerk Authentication, Next.js, Tailwind CSS, and Shadcn-UI technologies to deliver a seamless and intuitive user experience.
 
 ## Features
 
