@@ -24,7 +24,7 @@ RUN bun run build
 
 # Remove development dependencies
 RUN bun install --production --frozen-lockfile
-
+RUN bunx prisma generate
 # Stage 3: Production-ready image
 FROM node:18-alpine AS production
 
