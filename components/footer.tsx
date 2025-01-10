@@ -1,11 +1,12 @@
 import React from "react";
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
   return (
     <footer className="py-4">
       <div className="container mx-auto flex items-center justify-between px-4">
         <div className="text-sm">
-          <span>&copy; 2024 EduNotify</span>
+          <span>&copy; {currentYear} EduNotify</span>
           <span className="mx-2">•</span>
           <span>Created by Priyanshu Verma</span>
         </div>
